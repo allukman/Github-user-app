@@ -51,7 +51,14 @@ class FollowersFragment : Fragment() {
 
     private fun subscribeFollowers() {
         detailViewModel.followers.observe(viewLifecycleOwner) {data ->
-            setFollowerData(data)
+            if (data.isNotEmpty()) {
+                setFollowerData(data)
+                binding.tvError.visibility = View.GONE
+                binding.rvGithubUsers.visibility = View.VISIBLE
+            } else {
+                binding.tvError.visibility = View.VISIBLE
+                binding.rvGithubUsers.visibility = View.GONE
+            }
         }
 
         detailViewModel.followersIsLoading.observe(viewLifecycleOwner) { isLoading ->
