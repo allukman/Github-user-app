@@ -1,6 +1,7 @@
 package com.karsatech.githubuser.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -49,8 +50,16 @@ class MainActivity : AppCompatActivity() {
     }
     private fun subscribe() {
         binding.apply {
+
             mainViewModel.listUser.observe(this@MainActivity) { listUser ->
-                setGithubData(listUser)
+                if (listUser.isNotEmpty()) {
+                    setGithubData(listUser)
+                    binding.tvError.visibility = View.GONE
+                    binding.rvGithubUsers.visibility = View.VISIBLE
+                } else {
+                    binding.tvError.visibility = View.VISIBLE
+                    binding.rvGithubUsers.visibility = View.GONE
+                }
             }
 
             mainViewModel.isLoading.observe(this@MainActivity) { loading ->
