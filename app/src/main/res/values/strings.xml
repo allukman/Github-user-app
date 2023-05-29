@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">GithubUser</string>
+    <string name="search_hint">Search here…</string>
+    <string name="empty_value">   -   </string>
+    <string name="image">IMAGE</string>
+
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+
+    <!--    Default value detail user  -->
+    <string name="default_text_name_of_github_user">Name of Github User</string>
+    <string name="default_username_of_github_user">Username of Github User</string>
+    <string name="default_repositories">Repositories 0</string>
+    <string name="default_followers">0 followers</string>
+    <string name="default_following">0 following</string>
+    <string name="default_location">Jakarta, Indonesia</string>
+    <string name="default_company">Company</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

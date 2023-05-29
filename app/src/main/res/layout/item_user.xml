@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:id="@+id/item_github_user_layout"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/civ_image_github_user"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FFF"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ProgressBar
+        app:layout_constraintTop_toTopOf="@id/civ_image_github_user"
+        app:layout_constraintBottom_toBottomOf="@id/civ_image_github_user"
+        app:layout_constraintStart_toStartOf="@id/civ_image_github_user"
+        app:layout_constraintEnd_toEndOf="@id/civ_image_github_user"
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_item_github_user_username"
+        android:text="@string/default_username_of_github_user"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="300dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/civ_image_github_user"
+        app:layout_constraintTop_toTopOf="@id/civ_image_github_user"
+        app:layout_constraintStart_toEndOf="@id/civ_image_github_user"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.karsatech.githubuser.ui
+package com.karsatech.githubuser.ui.splash
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import com.karsatech.githubuser.R
+import com.karsatech.githubuser.ui.main.MainActivity
 
 class SplashScreenActivity : AppCompatActivity() {
     private val DELAY: Long = 1000
