@@ -6,8 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.karsatech.githubuser.data.remote.ApiService
 import com.karsatech.githubuser.data.response.DetailUserResponse
-import com.karsatech.githubuser.data.response.SearchUserResponse
-import com.karsatech.githubuser.ui.main.MainViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

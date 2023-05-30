@@ -1,5 +1,6 @@
 package com.karsatech.githubuser.data.remote
 
+import com.karsatech.githubuser.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -10,7 +11,7 @@ object ApiConfig {
 
     private var retrofitAPIGitHubUser : Retrofit? = null
 
-    const val BASE_URL = "https://api.github.com"
+    const val BASE_URL = BuildConfig.BASE_URL
 
     fun getApiClient(): Retrofit? {
         if (retrofitAPIGitHubUser == null) {

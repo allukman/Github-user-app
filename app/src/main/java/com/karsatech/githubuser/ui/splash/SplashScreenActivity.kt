@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import androidx.annotation.StringRes
 import com.karsatech.githubuser.R
 import com.karsatech.githubuser.ui.main.MainActivity
 
 class SplashScreenActivity : AppCompatActivity() {
-    private val DELAY: Long = 1000
+    companion object {
+        const val DELAY = 1000L
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
