@@ -1,1 +1,3 @@
-# Github-user-app - Dicoding Submission - Submission Awal
+# Github-user-app
+
+# Submission Awal - Belajar Fundamental Aplikasi Android (Dicoding)
