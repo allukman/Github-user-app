@@ -15,6 +15,8 @@ import com.karsatech.githubuser.databinding.ActivityDetailUserBinding
 import com.karsatech.githubuser.ui.detail.adapter.ViewPagerAdapter
 import com.karsatech.githubuser.ui.detail.followers.FollowersFragment
 import com.karsatech.githubuser.ui.detail.following.FollowingFragment
+import com.karsatech.githubuser.ui.factory.ViewModelFactory
+import com.karsatech.githubuser.ui.favorite.FavoriteViewModel
 
 class DetailUserActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailUserBinding
@@ -22,8 +24,15 @@ class DetailUserActivity : AppCompatActivity() {
 
     private lateinit var data: DetailUserResponse
     private var username = ""
+    private var isFavorite = false
+    private var favUser: DetailUserResponse? = null
 
     private val detailViewModel by viewModels<DetailViewModel>()
+    private val favoriteViewModel: FavoriteViewModel by viewModels {
+        ViewModelFactory.getInstance(
+            application
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,12 +43,13 @@ class DetailUserActivity : AppCompatActivity() {
 
         setupTransitionData()
         settingViewModel()
-        subscribe()
+        subscribeDetailViewModel()
         sendDataToFragment()
         settingViewPager()
+        setOnClick()
     }
 
-    private fun subscribe() {
+    private fun subscribeDetailViewModel() {
 
         detailViewModel.detailUser.observe(this@DetailUserActivity) { data ->
             setData(data)
@@ -47,6 +57,32 @@ class DetailUserActivity : AppCompatActivity() {
 
         detailViewModel.isLoading.observe(this@DetailUserActivity) { loading ->
             showLoading(loading)
+        }
+    }
+
+    private fun subscribeFavoriteViewModel(username: String) {
+        favoriteViewModel.getFavoriteUserByUsername(username).observe(this) { user ->
+            if (user != null) {
+                if (user.isEmpty()) {
+                    setFavorite(false)
+                } else {
+                    setFavorite(true)
+                }
+            }
+        }
+    }
+
+    private fun setOnClick() {
+        binding.btnFavorite.setOnClickListener {
+            if (favUser != null) {
+                if (!isFavorite) {
+                    favoriteViewModel.insertFavoriteUser(favUser!!)
+                    setFavorite(true)
+                } else {
+                    favoriteViewModel.removeFavoriteUser(favUser!!.id)
+                    setFavorite(false)
+                }
+            }
         }
     }
 
@@ -69,6 +105,7 @@ class DetailUserActivity : AppCompatActivity() {
     }
 
     private fun setData(data: DetailUserResponse) {
+        favUser = data
         binding.tvName.text = data.name
         binding.tvAmountFollowers.text = String.format("${data.followers} followers")
         binding.tvAmountFollowing.text = String.format("${data.following} following")
@@ -95,6 +132,21 @@ class DetailUserActivity : AppCompatActivity() {
         binding.tvUsername.text = data.username
 
         detailViewModel.getDetailUsers(username)
+        subscribeFavoriteViewModel(username)
+
+        binding.btnBack.setOnClickListener {
+            onBackPressed()
+        }
+    }
+
+    private fun setFavorite(favorite: Boolean) {
+        isFavorite = if (favorite) {
+            binding.ivFavorite.setImageResource(R.drawable.ic_baseline_favorite_24)
+            true
+        } else {
+            binding.ivFavorite.setImageResource(R.drawable.ic_baseline_unfavorite_24)
+            false
+        }
     }
 
     companion object {

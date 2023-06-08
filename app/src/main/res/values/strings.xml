@@ -16,10 +16,16 @@
     <string name="default_location">Jakarta, Indonesia</string>
     <string name="default_company">Company</string>
 
+    <string name="menu_1">Favorite</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="user_not_found">User not found!</string>
     <string name="empty_followers">This user don\'t have any followers</string>
     <string name="empty_following">This user don\'t have any following</string>
     <string name="image_content_description">IMAGE_LOGO</string>
+    <string name="search_bar_description">search bar description</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="list_github_user">List Github User</string>
+    <string name="you_don_t_have_favorite_user">You don\'t have favorite user</string>
 </resources>

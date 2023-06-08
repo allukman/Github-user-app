@@ -28,8 +28,7 @@
     <TextView
         android:id="@+id/tv_item_github_user_username"
         android:text="@string/default_username_of_github_user"
-        android:textStyle="bold"
-        android:textSize="18sp"
+        style="@style/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:maxWidth="300dp"
